@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Upload to AWS') {
       steps {
-        withAWS(region:'us-east-2', credentials:'aws-static') {
+        withAWS(region:AWS_DEFAULT_REGION, credentials:AWS_ACCESS_KEY_ID) {
           s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'jenkins-pipeline-bucket-kirsten')
         }
       }
